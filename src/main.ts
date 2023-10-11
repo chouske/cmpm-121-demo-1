@@ -16,9 +16,12 @@ const upgradecount = document.createElement("div");
 let upgraderate = 0;
 header.innerHTML = gameName;
 button.innerHTML = "🍭";
-upgradebutton.innerHTML = "Upgrade A";
-upgradebutton2.innerHTML = "Upgrade B";
-upgradebutton3.innerHTML = "Upgrade C";
+let acost: number = 10,
+  bcost: number = 100,
+  ccost: number = 1000;
+upgradebutton.innerHTML = "Upgrade A, cost: " + acost;
+upgradebutton2.innerHTML = "Upgrade B, cost: " + bcost;
+upgradebutton3.innerHTML = "Upgrade C, cost:" + ccost;
 upgradebutton.disabled = true;
 upgradebutton2.disabled = true;
 upgradebutton3.disabled = true;
@@ -26,25 +29,32 @@ let acounter: number = 0,
   bcounter: number = 0,
   ccounter: number = 0;
 let counter: number = 0;
+
 mydiv.innerHTML = counter + " lollipops";
 displayedrate.innerHTML = upgraderate + " lollipops/sec";
 button.addEventListener("click", function () {
   counter++;
 });
 upgradebutton.addEventListener("click", function () {
-  counter = counter - 10;
+  counter = counter - acost;
   upgraderate = upgraderate + 0.1;
   acounter++;
+  acost = acost * 1.15;
+  upgradebutton.innerHTML = "Upgrade A, cost: " + acost;
 });
 upgradebutton2.addEventListener("click", function () {
-  counter = counter - 100;
+  counter = counter - bcost;
   upgraderate = upgraderate + 2;
   bcounter++;
+  bcost = bcost * 1.15;
+  upgradebutton2.innerHTML = "Upgrade B, cost: " + bcost;
 });
 upgradebutton3.addEventListener("click", function () {
-  counter = counter - 1000;
+  counter = counter - ccost;
   upgraderate = upgraderate + 50;
   ccounter++;
+  ccost = ccost * 1.15;
+  upgradebutton3.innerHTML = "Upgrade C, cost:" + ccost;
 });
 app.append(header);
 app.append(button);
@@ -69,17 +79,17 @@ function update(current: number) {
   counter = counter + ((current - time) / 1000) * upgraderate; //A loop is one frame.
   time = current;
   window.requestAnimationFrame(update);
-  if (counter >= 10) {
+  if (counter >= acost) {
     upgradebutton.disabled = false;
   } else {
     upgradebutton.disabled = true;
   }
-  if (counter >= 100) {
+  if (counter >= bcost) {
     upgradebutton2.disabled = false;
   } else {
     upgradebutton2.disabled = true;
   }
-  if (counter >= 1000) {
+  if (counter >= ccost) {
     upgradebutton3.disabled = false;
   } else {
     upgradebutton3.disabled = true;
