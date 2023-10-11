@@ -15,13 +15,13 @@ const displayedrate = document.createElement("div");
 const upgradecount = document.createElement("div");
 let upgraderate = 0;
 header.innerHTML = gameName;
-button.innerHTML = "🍭";
+button.innerHTML = "Make a lollipop🍭";
 let acost: number = 10,
   bcost: number = 100,
   ccost: number = 1000;
-upgradebutton.innerHTML = "Upgrade A, cost: " + acost;
-upgradebutton2.innerHTML = "Upgrade B, cost: " + bcost;
-upgradebutton3.innerHTML = "Upgrade C, cost:" + ccost;
+upgradebutton.innerHTML = "Lollipop stand🍭 cost: " + acost;
+upgradebutton2.innerHTML = "Lollipop shop🍭 cost: " + bcost;
+upgradebutton3.innerHTML = "Lollipop factory🍭 cost:" + ccost;
 upgradebutton.disabled = true;
 upgradebutton2.disabled = true;
 upgradebutton3.disabled = true;
@@ -40,21 +40,21 @@ upgradebutton.addEventListener("click", function () {
   upgraderate = upgraderate + 0.1;
   acounter++;
   acost = acost * 1.15;
-  upgradebutton.innerHTML = "Upgrade A, cost: " + acost;
+  upgradebutton.innerHTML = "Lollipop stand🍭 cost: " + acost;
 });
 upgradebutton2.addEventListener("click", function () {
   counter = counter - bcost;
   upgraderate = upgraderate + 2;
   bcounter++;
   bcost = bcost * 1.15;
-  upgradebutton2.innerHTML = "Upgrade B, cost: " + bcost;
+  upgradebutton2.innerHTML = "Lollipop shop🍭 cost: " + bcost;
 });
 upgradebutton3.addEventListener("click", function () {
   counter = counter - ccost;
   upgraderate = upgraderate + 50;
   ccounter++;
   ccost = ccost * 1.15;
-  upgradebutton3.innerHTML = "Upgrade C, cost:" + ccost;
+  upgradebutton3.innerHTML = "Lollipop factory🍭 cost:" + ccost;
 });
 app.append(header);
 app.append(button);
