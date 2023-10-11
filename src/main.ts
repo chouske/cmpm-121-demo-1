@@ -5,6 +5,17 @@ const app: HTMLDivElement = document.querySelector("#app")!;
 const gameName = "Chase's game";
 
 document.title = gameName;
+interface Item {
+  name: string;
+  cost: number;
+  rate: number;
+}
+
+const availableItems: Item[] = [
+  { name: "Lollipop stand🍭", cost: 10, rate: 0.1 },
+  { name: "Lollipop shop🍭", cost: 100, rate: 2 },
+  { name: "Lollipop factory🍭", cost: 1000, rate: 50 },
+];
 const button = document.createElement("button");
 const upgradebutton = document.createElement("button");
 const upgradebutton2 = document.createElement("button");
@@ -16,12 +27,9 @@ const upgradecount = document.createElement("div");
 let upgraderate = 0;
 header.innerHTML = gameName;
 button.innerHTML = "Make a lollipop🍭";
-let acost: number = 10,
-  bcost: number = 100,
-  ccost: number = 1000;
-upgradebutton.innerHTML = "Lollipop stand🍭 cost: " + acost;
-upgradebutton2.innerHTML = "Lollipop shop🍭 cost: " + bcost;
-upgradebutton3.innerHTML = "Lollipop factory🍭 cost:" + ccost;
+upgradebutton.innerHTML = "Lollipop stand🍭 cost: " + availableItems[0].cost;
+upgradebutton2.innerHTML = "Lollipop shop🍭 cost: " + availableItems[1].cost;
+upgradebutton3.innerHTML = "Lollipop factory🍭 cost:" + availableItems[2].cost;
 upgradebutton.disabled = true;
 upgradebutton2.disabled = true;
 upgradebutton3.disabled = true;
@@ -36,25 +44,26 @@ button.addEventListener("click", function () {
   counter++;
 });
 upgradebutton.addEventListener("click", function () {
-  counter = counter - acost;
-  upgraderate = upgraderate + 0.1;
+  counter = counter - availableItems[0].cost;
+  upgraderate = upgraderate + availableItems[0].rate;
   acounter++;
-  acost = acost * 1.15;
-  upgradebutton.innerHTML = "Lollipop stand🍭 cost: " + acost;
+  availableItems[0].cost = availableItems[0].cost * 1.15;
+  upgradebutton.innerHTML = "Lollipop stand🍭 cost: " + availableItems[0].cost;
 });
 upgradebutton2.addEventListener("click", function () {
-  counter = counter - bcost;
-  upgraderate = upgraderate + 2;
+  counter = counter - availableItems[1].cost;
+  upgraderate = upgraderate + availableItems[1].rate;
   bcounter++;
-  bcost = bcost * 1.15;
-  upgradebutton2.innerHTML = "Lollipop shop🍭 cost: " + bcost;
+  availableItems[1].cost = availableItems[1].cost * 1.15;
+  upgradebutton2.innerHTML = "Lollipop shop🍭 cost: " + availableItems[1].cost;
 });
 upgradebutton3.addEventListener("click", function () {
-  counter = counter - ccost;
-  upgraderate = upgraderate + 50;
+  counter = counter - availableItems[2].cost;
+  upgraderate = upgraderate + availableItems[2].rate;
   ccounter++;
-  ccost = ccost * 1.15;
-  upgradebutton3.innerHTML = "Lollipop factory🍭 cost:" + ccost;
+  availableItems[2].cost = availableItems[2].cost * 1.15;
+  upgradebutton3.innerHTML =
+    "Lollipop factory🍭 cost:" + availableItems[2].cost;
 });
 app.append(header);
 app.append(button);
@@ -79,17 +88,17 @@ function update(current: number) {
   counter = counter + ((current - time) / 1000) * upgraderate; //A loop is one frame.
   time = current;
   window.requestAnimationFrame(update);
-  if (counter >= acost) {
+  if (counter >= availableItems[0].cost) {
     upgradebutton.disabled = false;
   } else {
     upgradebutton.disabled = true;
   }
-  if (counter >= bcost) {
+  if (counter >= availableItems[1].cost) {
     upgradebutton2.disabled = false;
   } else {
     upgradebutton2.disabled = true;
   }
-  if (counter >= ccost) {
+  if (counter >= availableItems[2].cost) {
     upgradebutton3.disabled = false;
   } else {
     upgradebutton3.disabled = true;
