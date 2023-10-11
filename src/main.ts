@@ -20,7 +20,6 @@ app.append(header);
 app.append(button);
 app.append(mydiv);
 let time = 0;
-let current = 0;
 function update(current: number) {
   mydiv.innerHTML = counter + " lollipops";
   counter = counter + (current - time) / 1000; //A loop is one frame.
