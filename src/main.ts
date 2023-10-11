@@ -19,7 +19,12 @@ button.addEventListener("click", function () {
 app.append(header);
 app.append(button);
 app.append(mydiv);
-setInterval(function () {
-  counter++;
+let time = 0;
+let current = 0;
+function update(current: number) {
   mydiv.innerHTML = counter + " lollipops";
-}, 1000);
+  counter = counter + (current - time) / 1000; //A loop is one frame.
+  time = current;
+  window.requestAnimationFrame(update);
+}
+window.requestAnimationFrame(update);
