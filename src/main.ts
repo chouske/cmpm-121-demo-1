@@ -51,7 +51,7 @@ let acounter: number = 0,
   ccounter: number = 0,
   dcounter: number = 0,
   ecounter: number = 0;
-let counter: number = 10000;
+let counter: number = 0;
 
 mydiv.innerHTML = counter + " lollipops";
 displayedrate.innerHTML = upgraderate + " lollipops/sec";
