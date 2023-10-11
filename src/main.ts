@@ -19,3 +19,7 @@ button.addEventListener("click", function () {
 app.append(header);
 app.append(button);
 app.append(mydiv);
+setInterval(function () {
+  counter++;
+  mydiv.innerHTML = counter + " lollipops";
+}, 1000);
