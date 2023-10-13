@@ -9,14 +9,40 @@ interface Item {
   name: string;
   cost: number;
   rate: number;
+  description: string;
 }
 
 const availableItems: Item[] = [
-  { name: "Lollipop stand🍭", cost: 10, rate: 0.1 },
-  { name: "Lollipop shop🍭", cost: 100, rate: 2 },
-  { name: "Lollipop factory🍭", cost: 1000, rate: 50 },
-  { name: "Lollipop town🍭", cost: 10000, rate: 1000 },
-  { name: "Lollipop city🍭", cost: 100000, rate: 20000 },
+  {
+    name: "Lollipop stand🍭",
+    cost: 10,
+    rate: 0.1,
+    description: "A lone man with a dream",
+  },
+  {
+    name: "Lollipop shop🍭",
+    cost: 100,
+    rate: 2,
+    description: "Offers a plethora of flavors",
+  },
+  {
+    name: "Lollipop factory🍭",
+    cost: 1000,
+    rate: 50,
+    description: "Candy overload!",
+  },
+  {
+    name: "Lollipop town🍭",
+    cost: 10000,
+    rate: 1000,
+    description: "This can't be good for the environment",
+  },
+  {
+    name: "Lollipop city🍭",
+    cost: 100000,
+    rate: 20000,
+    description: "Now this is madness",
+  },
 ];
 const button = document.createElement("button");
 /*const upgradebutton = document.createElement("button");
@@ -32,7 +58,11 @@ for (let i = 0; i < availableItems.length; i++) {
   const tempbutton = document.createElement("button");
   buttons[i] = tempbutton;
   buttons[i].innerHTML =
-    availableItems[i].name + "cost: " + availableItems[i].cost;
+    availableItems[i].name +
+    " " +
+    availableItems[i].description +
+    " cost: " +
+    availableItems[i].cost;
 }
 const header = document.createElement("h1");
 const mydiv = document.createElement("div");
@@ -71,7 +101,11 @@ for (let i = 0; i < availableItems.length; i++) {
     counters[i]++;
     availableItems[i].cost = availableItems[i].cost * 1.15;
     buttons[i].innerHTML =
-      availableItems[i].name + "cost: " + availableItems[i].cost;
+      availableItems[i].name +
+      " " +
+      availableItems[i].description +
+      " cost: " +
+      availableItems[i].cost;
   });
 }
 
